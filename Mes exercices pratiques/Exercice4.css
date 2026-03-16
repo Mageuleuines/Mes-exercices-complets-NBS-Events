@@ -1,0 +1,32 @@
+
+
+[data-bs-theme=light]{
+    --mon-accent:#1A73E8;
+    --mon-surface:#f1f3f4;
+    --mon-texte-secondaire:#5F6368;
+    --mon-ombre:0 2px 8px rgba(0,0,0,0.12);
+    --mon-bordure-accent:3px solid #1A73E8;
+}
+
+
+[data-bs-theme=dark]{
+    --mon-accent:#8ab4f8;
+    --mon-surface:#2d2f31;
+    --mon-texte-secondaire:#9aa0a6;
+    --mon-ombre:0 2px 8px rgba(0,0,0,0.5);
+    --mon-bordure-accent:3px solid #8ab4f8;
+}
+
+body{
+    transition: background-color 0.3s ease,color 0.3s ease;
+}
+
+html[data-bs-theme="light"] #hero{
+    background-color:var(--mon-surface) ;
+    color: var(--mon-texte-secondaire);
+}
+
+html[data-bs-theme="dark"] #hero{
+    background-color:var(--mon-surface) ;
+    color: var(--mon-texte-secondaire);
+}

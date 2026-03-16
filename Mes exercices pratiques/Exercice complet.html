@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBS Events</title>
+    <!-- Script anti-flash -->
+     <script>
+        (function() {
+            var t=localStorage.getItem('theme-prefere');
+            var sys=window.matchMedia('prefers-color-scheme:dark').matches;
+            document.documentElement.setAttribute('data-bs-theme',t ||(sys ? 'dark' : 'light'));
+        })();
+     </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="Exercice complet.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">NBS Events</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+             data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+             aria-label="Toggle navigation">
+
+             <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Accueil</a>
+                    </li>
+
+                      <li class="nav-item">
+                        <a class="nav-link" href="#service">Service</a>
+                    </li>
+
+                      <li class="nav-item">
+                        <a class="nav-link" href="#témoignages">Témoignages</a>
+                    </li>
+
+                      <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+
+                </ul>
+                <button id="themeToggle" class="btn btn-outline-primary ms-lg-3" onclick="themeToggle()"
+                title="Basculer le theme">
+                    Démarrer
+                </button>
+            </div>
+        </div>
+
+    </nav>
+    <main>
+
+                    <!-- section Accuiel -->
+
+        <section id="accueil" style="background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('Mes images/bouquet fleur1.jpg') center/cover no-repeat; min-height:100vh; position: relative; display: flex; align-items: center; color: white;">
+                <div class="container text-center">
+                    <h1 class="fw-bold display-1">Donnez de la joie<br>a vos proches</h1>
+                    <p class="fs-4 mt-3">La Satisfaction de nos clients reste notre ultime priorité.</p>
+                    <div class="d-flex flex-column flex-md-row gap-4 justify-content-center mt-4">
+                        <button class="btn btn-lg rounded-5 bg-white px-4 py-2 text-dark border-0"><i class="bi bi-rocket-takeoff me-2"></i>Découvrir nos Services</button>
+                        <button class="btn btn-lg text-white rounded-5 px-4 py-2 bg-transparent border-white"><i class="bi bi-fast-forward-circle me-2"></i>En savoir plus</button>
+                    </div>
+                </div>
+        </section>
+
+                    <!-- section Services -->
+
+        <section id="service" class="py-5 bg-light">
+            <div class="text-center">
+                <h2 class="mb-3 fw-bold display-2">Nos Services</h2>
+                <p class="mb-3 text-muted">Nous sommes solicités pour organiser des surprises a
+                     des personnes speciles aux des clients</p>
+            </div>
+
+            <div class="container py-5">
+                <div class="row g-4">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card h-100 d-flex flex-column card-hover">
+                            <img src="Mes images/Montre 2.jpg" class="card-img-top" alt="Montres...">
+                            <div class="card-body d-flex flex-column">
+                                <h4 class="card-title">Nos montres</h4>
+                                <p class="card-text">Nos montres sont de qualitées et varies 
+                                    en fonction des differentes marques.</p>
+                                <a href="#" class="btn btn-outline-primary w-100 mt-auto">voir plus</a>
+                            </div>    
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card h-100 d-flex flex-column card-hover">
+                            <img src="Mes images/chaine1.jpg" class="card-img-top" alt="coliers">
+                            <div class="card-body d-flex flex-column">
+                                <h4 class="card-title">Nos coliers</h4>
+                                <p class="card-text"> sont egalement de qualitées et varies 
+                                    en fonction des differentes marques.</p>
+                                <a href="#" class="btn btn-outline-warning w-100 mt-auto">voir plus</a>
+                            </div>    
+                        </div>
+                    </div>
+
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100 d-flex flex-column card-hover">
+                                <img src="Mes images/bracellet1.jpg" class="card-img-top" alt="Bracelets">
+                                <div class="card-body d-flex flex-column">
+                                    <h4 class="card-title">Nos Bracelets</h4>
+                                    <p class="card-text"> sont egalement de qualitées et varies 
+                                        en fonction des differentes marques.</p>
+                                    <a href="#" class="btn btn-outline-secondary w-100 mt-auto">voir plus</a>
+                                </div>    
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100 d-flex flex-column card-hover">
+                                <img src="Mes images/bouquet d'argent1.jpg" class="card-img-top" alt="bouquet">
+                                <div class="card-body d-flex flex-column">
+                                    <h4 class="card-title">Nos bouquets d'argent</h4>
+                                    <p class="card-text">Ils sont constituer en fonction du montant que le client a sa possession.</p>
+                                    <a href="#" class="btn btn-outline-info w-100 mt-auto">voir plus</a>
+                                </div>    
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100 d-flex flex-column card-hover">
+                                <img src="Mes images/bouquet fleur3.jpg" class="card-img-top" alt="coliers">
+                                <div class="card-body d-flex flex-column">
+                                    <h4 class="card-title">Nos bouquets de fleurs</h4>
+                                    <p class="card-text">En fonction du montant que client nous propose,
+                                        nous presentons les differents types de fleurs et il fait son choix.</p>
+                                    <a href="#" class="btn btn-outline-success w-100 mt-auto">voir plus</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100 d-flex flex-column card-hover">
+                                <img src="Mes images/Montres3.jpg" class="card-img-top" alt="Montres...">
+                                <div class="card-body d-flex flex-column">
+                                    <h4 class="card-title">Nos montres</h4>
+                                    <p class="card-text">Nos montres sont de qualitées et varies 
+                                        en fonction des differentes marques.</p>
+                                    <a href="#" class="btn btn-outline-primary w-100 mt-auto">voir plus</a>
+                                </div>    
+                            </div>
+                        </div>
+                </div>        
+            </div>
+        </section>
+
+        
+
+                        <!-- SECTION TEMOIGNANGES -->
+
+        <section id="témoignages" class="py-5 bg-warning-subtle">
+
+
+            <div class="container">
+
+                
+                <div class="text-center mb-5">
+                    <h2 class="mb-3 fw-bold display-2">Témoignages clients</h2>
+                    <p class="mb-3 text-dark">Ce que nos clients disent de nous.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm text-center p-4">
+
+                            <img src="Mes images/client1.jpg" alt="client1" 
+                                class="rounded-circle mx-auto mb-3" width="140" height="140">
+                              <div class="d-flex justify-content-center mb-3 text-warning fs-5">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star"></i>
+                                        <i class="bi bi-star"></i>
+                                    </div>
+                            <p class="text-dark">
+                               <em>Le service était excellent. L'équipe de NBS Events a organisé
+                                    une surprise incroyable pour mon anniversaire.</em>
+                            </p> 
+                            <h5 class="mt-3 mb-0"><em>Raoul</em></h5> 
+                            <small class="text-muted"><em>Client</em></small>  
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm text-center p-4">
+
+                            <img src="Mes images/client2.jpg" alt="client2" 
+                            class="rounded-circle mx-auto mb-3" width="140" height="140">
+                              <div class="d-flex justify-content-center mb-3 text-warning fs-5">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star"></i>
+                                    </div>
+                            <p class="text-dark">
+                               <em>Très professionnel et créatif. Je recommande fortement
+                                    leurs services.</em>
+                            </p>
+                            <h5 class="mt-3 mb-0"><em>Vanelle Maffo</em></h5>
+                            <small class="text-muted"><em>Cliente</em></small>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm text-center p-4">
+
+                            <img src="Mes images/client3.jpg" alt="client3"
+                                class="rounded-circle mx-auto mb-3" width="140" height="140">
+                              <div class="d-flex justify-content-center mb-3 text-warning fs-5">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                            <p class="text-dark">
+                               <em>Une expérience magnifique. Merci pour cette belle organisation.</em>
+                            </p>
+                            <h5 class="mt-3 mb-0"><em>Marie Solange</em></h5>    
+                            <small class="text-muted"><em>Cliente</em></small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>    
+
+        </section> 
+        
+        <section id="contact" class="py-5">
+            <div class="text-center bg-light">
+                <h2 class="mb-3 fw-bold display-2">Contactez-nous</h2>
+                <p class="mb-3 text-muted">Les moyens neccessaire pour nous joindre.</p>
+            </div>
+
+                <div class="container">
+                    <div class="row g-4">
+                        <div class="col">
+                            <div class="h-100 shadow rounded p-4 bg-white">
+
+                                <form class="form">
+                                    <div class="mb-3">
+                                        <label for="nom" class="form-label">Nom complet</label>
+                                        <input type="text" class="form-control" id="name" 
+                                        placeholder="Votre nom" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email"
+                                        placeholder="Votre@gmail.com" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="téléphone" class="form-label">Téléphone</label>
+                                        <input type="text" class="form-control" id="téléphone" 
+                                        placeholder="+237 690531949" required>
+                                    </div>
+
+                                    <div>
+                                        <label for="service" class="form-label">Service souhaité</label>
+                                        <select class="form-select">
+                                            <option>Aggrandissement photos</option>
+                                            <option>Commande gateaux avec pression de saveur</option>
+                                            <option>Commande bouquets d'argents/fleurs</option>
+                                            <option>Commande pagnier</option>
+                                            <option>Personnalisation bijoux</option>
+                                            <option>Pack complet</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="message" class="form-label">Message</label>
+                                        <textarea class="form-control" rows="4" placeholder="Précision de votre commande"></textarea>
+                                    </div>
+
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="checkDefault">
+                                        <label for="checkDefault" class="form-check-label">
+                                             J'accepte que mes données soient utilisées pour me recontacter.
+                                        </label>
+                                    </div>
+
+                                     <div class="text-center">
+                                                <button type="submit" class="btn btn-primary rounded-5 mb-3 w-75">
+                                                <i class="bi bi-send"></i>
+                                                Envoyer le message
+                                            </button>
+                                        </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+        </section>
+
+        <footer class="bg-dark text-white pt-4 pb-3">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <h3 class="fw-bold text-warning">NBS Events</h3>
+                        <p class="text-light">Nous organisons des surprises et événements spéciaux pour rendre
+                            vos moments inoubliables.
+                        </p>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <h4>Liens rapides</h4>
+                        <ul class="list-unstyled">  
+                                <li><a href="#" class="text-white text-decoration-none">Accueil</a></li>
+                                <li><a href="#service" class="text-white text-decoration-none">Services</a></li>
+                                <li><a href="#temoignages" class="text-white text-decoration-none">Témoignages</a></li>
+                                <li><a href="#contact" class="text-white text-decoration-none">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <h5 class="fw-bold">Contact</h5>
+                        <p class="mb-1">📍 Douala, Cameroun</p>
+                        <p class="mb-1">📞 +237 6 00 00 00 00</p>
+                        <p class="mb-1">✉️ contact@nbsevents.com</p>
+                    </div>
+
+                    <hr class="border-light">
+                    <div class="text-center">
+                        <p class="mb-0">
+                            © 2026 NBS Events - Tous droits réservés
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+    
+
+    </main>
+
+    <script>
+        function themeToggle() {
+            const htmlElement=document.documentElement;
+            const htmlActuel=htmlElement.getAttribute('data-bs-theme');
+            const nouveauTheme=htmlActuel=== 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-bs-theme',nouveauTheme);
+            localStorage.setItem('prefere-theme',nouveauTheme);
+            const boutonToggle=document.getElementById('themeToggle');
+
+            if(nouveauTheme==='dark') {
+            boutonToggle.textContent='☀️';
+                boutonToggle.textContent='';
+                boutonToggle.title='passer au mode clair';
+            }
+            else{
+            boutonToggle.textContent= '🌙';
+                boutonToggle.textContent='';
+                boutonToggle.title='passer au mode sombre';
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
