@@ -1,0 +1,42 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merienda:wght@300..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Redressed&display=swap');
+
+
+.redressed{
+    font-family: "Redressed",cursive;
+}
+
+.merriwather{
+    font-family: "Merriwather",serif;
+}
+.ma-navbar{
+    background-color: rgba(0, 0, 0, 0.55);
+    color: "Merriweather" ,serif;
+    box-shadow: 1px 1px 3px rgba(255, 255, 255, 0.54);
+}
+
+.ma-navbar .nav-link{
+    border-bottom: 1px solid transparent;
+    transition: padding-bottom 0.4s ease-in-out, border-color 0.3s ease;
+}
+
+.ma-navbar .nav-link:hover{
+    padding-bottom: 20px;
+    border-bottom-color: var(--bs-teal);
+}
+
+.btn-order{
+    color: var(--bs-teal);
+    border-color: var(--bs-teal);
+    transition: 0.5s;
+}
+
+.btn-order:hover,
+.btn-order:active{
+    color: #fff;
+    background-color: var(--bs-teal);
+}
+
+.banner{
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5),url("Restaurant1.jpg"));
+}
