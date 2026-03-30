@@ -1,109 +1,407 @@
 
-:root{
-    --taille-logo:40px;
-    --taille-body:18px;
-    --ombre:0 2px 20px rgba(0,0,0,0.5);
-    --couleur-texte:black;
-    --ma-transition:0.3s ease;
-    --couleur-primary:#ffc107;
-    --mon-logo:#ffc107;
-    --ma-bordure:2px;
-    --mon-cusor:pointer;
-    --bordure-arrondit:10px;
-    --ma-hauteur:400px;
-    
-
+/* Variables globales pour centraliser les couleurs et améliorer la maintenabilité. */
+/* Utiliser des variables facilite le passage du mode clair au mode sombre. */
+:root {
+    color-scheme: light;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    --bg: #f7f8fb;
+    --surface: #ffffff;
+    --surface-soft: rgba(255,255,255,0.95);
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #6b7280;
+    --primary: #ffb703;
+    --primary-strong: #f59e0b;
+    --accent: #3b82f6;
+    --border: rgba(15,23,42,0.08);
+    --shadow: 0 20px 50px rgba(15,23,42,0.08);
+    --hero-bg: linear-gradient(180deg, rgba(15,23,42,0.55), rgba(15,23,42,0.9)), url('Mes images/bouquet fleur1.jpg');
+    --link: #1d4ed8;
+    --link-hover: #d97706;
+    --radius: 24px;
+    --transition: 0.35s ease;
 }
 
-
-[data-bs-theme=light]{
-    --mon-accent:#1A73E8;
-    --mon-surface:#f1f3f4;
-    --mon-texte-secondaire:#5F6368;
-    --mon-ombre:0 2px 8px rgba(0,0,0,0.12);
-    --mon-bordure-accent:3px solid #1A73E8;
+/* Dark mode sans JavaScript : le checkbox caché bascule les variables CSS pour tout le site. */
+/* Cette technique est simple et fiable, car elle n'utilise que les sélecteurs CSS. */
+.theme-switch {
+    position: absolute;
+    left: -9999px;
 }
 
-
-[data-bs-theme=dark]{
-    --mon-accent:#8ab4f8;
-    --mon-surface:#2d2f31;
-    --mon-texte-secondaire:#9aa0a6;
-    --mon-ombre:0 2px 8px rgba(0,0,0,0.5);
-    --mon-bordure-accent:3px solid #8ab4f8;
+.theme-switch:checked ~ .page-wrapper {
+    color-scheme: dark;
+    --bg: #0b1220;
+    --surface: #111827;
+    --surface-soft: rgba(15,23,42,0.88);
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --primary: #fbbf24;
+    --primary-strong: #f59e0b;
+    --accent: #60a5fa;
+    --border: rgba(148,163,184,0.24);
+    --shadow: 0 22px 50px rgba(0,0,0,0.45);
+    --hero-bg: linear-gradient(180deg, rgba(2,12,27,0.68), rgba(2,12,27,0.95)), url('Mes images/bouquet fleur1.jpg');
+    --link: #93c5fd;
+    --link-hover: #fcd34d;
 }
 
-html{
+* {
+    box-sizing: border-box;
+}
+
+html {
     scroll-behavior: smooth;
 }
 
-h2{
-    text-decoration: underline var(--couleur-primary);
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
 }
 
-.navbar-nav{
-    margin-left: auto;
-    transition: var(--ma-transition);
-    font-size: var(--taille-body);
-    cursor: var(--mon-cusor);
+.page-wrapper {
+    min-height: 100vh;
 }
 
-.nav-link{
-position: relative;
+body, input, button, textarea, select {
+    font-family: inherit;
 }
 
-.nav-link::after{
-content: "";
-position: absolute;
-width: 0%;
-height: 2px;
-background-color:var(--couleur-primary);
-left: 0;
-bottom: -5px;
-transition: width 0.3s;
+a {
+    color: var(--link);
+    transition: color var(--transition);
 }
 
-.nav-link:hover::after{
-width: 100%;
+a:hover, a:focus {
+    color: var(--link-hover);
+    text-decoration: none;
 }
 
-.navbar-brand{
-    font-size:var(--taille-logo);
-    color:var(--mon-logo);
+.navbar {
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
 }
 
-.card{
-    border: none;
-    border-radius: 15px;
+.theme-switch:checked ~ .page-wrapper .navbar {
+    background: rgba(15,23,42,0.85);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    color: var(--text-primary);
+}
+
+.theme-switch:checked ~ .page-wrapper .navbar-brand {
+    color: #f8fafc;
+}
+
+.navbar-nav .nav-link {
+    color: var(--text-secondary);
+    position: relative;
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover {
+    color: var(--text-primary);
+}
+
+.theme-switch:checked ~ .page-wrapper .navbar-nav .nav-link,
+.theme-switch:checked ~ .page-wrapper .navbar-nav .nav-link.active,
+.theme-switch:checked ~ .page-wrapper .navbar-nav .nav-link:hover {
+    color: #f8fafc;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: var(--primary);
+    left: 0;
+    bottom: -6px;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.theme-toggle {
+    min-width: 140px;
+    gap: 0.65rem;
+    /* Le bouton de thème est large pour que les icônes et le texte restent lisibles. */
+}
+
+.theme-toggle .theme-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.theme-toggle .theme-text::before {
+    content: 'Clair';
+    font-weight: 600;
+}
+
+.theme-switch:checked ~ .page-wrapper .theme-toggle .sun {
+    display: none;
+}
+
+.theme-switch:checked ~ .page-wrapper .theme-toggle .moon {
+    display: inline-flex;
+}
+
+.theme-switch:checked ~ .page-wrapper .theme-toggle .theme-text::before {
+    content: 'Sombre';
+}
+
+.theme-switch:not(:checked) ~ .page-wrapper .theme-toggle .moon {
+    display: none;
+}
+
+.hero {
+    min-height: 90vh;
+    background: var(--hero-bg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.hero-mask {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.28);
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.eyebrow {
+    letter-spacing: 0.22em;
+    font-size: 0.8rem;
+    color: #f8fafc;
+    opacity: 0.95;
+}
+
+.hero h1 {
+    line-height: 1.05;
+}
+
+.hero .btn-primary {
+    background: var(--primary);
+    border-color: transparent;
+    color: #0f172a;
+}
+
+.hero .btn-outline-light {
+    border-color: rgba(255,255,255,0.75);
+    color: #fff;
+}
+
+.hero .btn-outline-light:hover {
+    background: rgba(255,255,255,0.14);
+}
+
+.video-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius);
+    padding: 1.3rem;
+    min-height: 420px;
+}
+
+.theme-switch:checked ~ .page-wrapper .video-card {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(148,163,184,0.22);
+}
+
+.video-responsive {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
     overflow: hidden;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    /* On crée un conteneur responsive pour que l'iframe reste à la bonne taille. */
 }
 
-.card-hover{
-    transition: var(--ma-transition);
+.video-responsive iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
 }
 
-.card-hover:hover{
-    transform: translateY(-10);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+.section-title h2 {
+    font-size: clamp(2rem, 2.5vw, 3rem);
 }
 
-.card-hover img{
+.section-title p {
+    max-width: 680px;
+    margin: auto;
+    color: var(--text-secondary);
+}
+
+section {
+    padding: 100px 0;
+}
+
+.bg-light {
+    background: var(--surface) !important;
+}
+
+.theme-switch:checked ~ .page-wrapper .bg-light {
+    background: rgba(15,23,42,0.9) !important;
+}
+
+.theme-switch:checked ~ .page-wrapper .text-muted {
+    color: var(--text-muted) !important;
+}
+
+.theme-switch:checked ~ .page-wrapper .card-body,
+.theme-switch:checked ~ .page-wrapper .card-title,
+.theme-switch:checked ~ .page-wrapper .card-text,
+.theme-switch:checked ~ .page-wrapper .card h4 {
+    color: #f8fafc;
+}
+
+.bg-warning-subtle {
+    background: rgba(255,183,3,0.12);
+}
+
+.theme-switch:checked ~ .page-wrapper .bg-warning-subtle {
+    background: rgba(251,191,36,0.12);
+}
+
+.card {
+    border: none;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--surface-soft);
+    box-shadow: var(--shadow);
+    transition: transform var(--transition), box-shadow var(--transition);
+    /* Les cartes profitent d'un fond doux et d'une ombre pour un rendu professionnel. */
+}
+
+.theme-switch:checked ~ .page-wrapper .card {
+    background: rgba(17,24,39,0.75);
+}
+
+.card-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 24px 55px rgba(0,0,0,0.15);
+}
+
+.card-hover img {
     transition: transform 0.4s ease;
     height: 220px;
     object-fit: cover;
 }
 
-.card-hover img:hover{
+.card-hover img:hover {
     transform: scale(1.05);
 }
 
-.photos{
-    border: 3px solid #ffc107 ;
+.photos {
+    border: 3px solid var(--primary);
 }
 
-section{
-    padding-top: 80px;
-    padding-bottom: 80px;
+.theme-switch:checked ~ .page-wrapper .photos {
+    border-color: var(--primary-strong);
+}
+
+.btn-primary, .btn-outline-primary {
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background: var(--primary);
+    border: none;
+    color: #0f172a;
+}
+
+.btn-primary:hover {
+    background: var(--primary-strong);
+}
+
+.btn-outline-warning {
+    color: #92400e;
+    border-color: #facc15;
+}
+
+.btn-outline-warning:hover {
+    background: rgba(250,204,21,0.1);
+}
+
+.form-control, .form-select, .form-check-input {
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+}
+
+.theme-switch:checked ~ .page-wrapper .form-control,
+.theme-switch:checked ~ .page-wrapper .form-select,
+.theme-switch:checked ~ .page-wrapper .form-check-input {
+    background: #1f2937;
+    border-color: rgba(148,163,184,0.22);
+    color: #f8fafc;
+}
+
+.form-control::placeholder {
+    color: var(--text-secondary);
+}
+
+.card h4, .card-title {
+    font-weight: 700;
+}
+
+footer {
+    background: #0e172a;
+    color: #dbeafe;
+}
+
+footer a {
+    color: #e2e8f0;
+}
+
+footer a:hover {
+    color: var(--primary);
+}
+
+footer .text-warning {
+    color: var(--primary) !important;
+}
+
+@media (max-width: 991px) {
+    .hero {
+        min-height: 75vh;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar-nav {
+        margin-top: 1rem;
+    }
+    .page-wrapper {
+        padding-top: 20px;
+    }
 }
 
 
