@@ -84,7 +84,15 @@
                             <p class="mb-3 text-white fw-semibold">Vidéo de présentation</p>
                             <!-- Vidéo intégrée depuis YouTube : on utilise un iframe responsive pour que la vidéo s'adapte correctement aux différentes tailles d'écran. -->
                             <div class="video-responsive">
-                                <iframe src="https://youtu.be/UXU0_vRYYJI?list=RDUXU0_vRYYJI" title="Présentation NBS Events" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <video id="heroVideo" src="video/file.mp4" muted loop playsinline title="Présentation NBS Events"></video>
+                            </div>
+                            <div class="video-controls d-flex justify-content-center gap-3 mt-3">
+                                <button id="btnPlayPause" class="btn btn-light rounded-circle video-btn" title="Lecture / Pause">
+                                    <i class="bi bi-pause-fill"></i>
+                                </button>
+                                <button id="btnMute" class="btn btn-light rounded-circle video-btn" title="Son actif / Muet">
+                                    <i class="bi bi-volume-mute-fill"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -421,6 +429,109 @@
 
     </main>
     </div>
+
+    <!-- ==================== SCRIPT DE CONTROLE DE LA VIDEO ==================== -->
+    <script>
+        // ---- 1. RECUPERER LES ELEMENTS ----
+        // document : c'est la page web entiere (comme un grand classeur).
+        // getElementById : cherche dans ce classeur l'element qui porte le nom (l'ID) qu'on lui donne.
+        // On stocke chaque element dans une "boite" (variable) pour pouvoir l'utiliser apres.
+        const video = document.getElementById('heroVideo');          // La balise <video>
+        const btnPlayPause = document.getElementById('btnPlayPause'); // Bouton lecture / pause
+        const btnMute = document.getElementById('btnMute');           // Bouton son / muet
+
+        // ---- 2. FONCTION POUR DEMARRER LA VIDEO ----
+        // "async" veut dire que cette fonction peut attendre que certaines actions finissent
+        // avant de passer a la suite (comme attendre que la video soit prete).
+        async function demarrerVideo() {
+            try {
+                // video.play() demande au navigateur de lancer la lecture.
+                // "await" dit : "attends que la lecture demarre vraiment avant de continuer".
+                await video.play();
+                
+                // Si on arrive ici, c'est que la video tourne.
+                // console.log ecrit un petit message dans la console du navigateur (F12 -> onglet Console).
+                // C'est utile pour verifier que tout va bien pendant le developpement.
+                console.log('Video lancee avec succes !');
+            } catch (erreur) {
+                // Si le navigateur refuse de lancer la video (par exemple parce que l'utilisateur
+                // n'a pas encore interagi avec la page), on attrape l'erreur ici.
+                console.warn('Lecture auto bloquee par le navigateur :', erreur);
+            }
+        }
+
+        // ---- 3. ECOUTER LES EVENEMENTS DE LA VIDEO ----
+        // Un "evenement" c'est une action qui se passe sur la page : charger, jouer, mettre en pause...
+        // addEventListener signifie : "quand cet evenement arrive, fais ceci".
+
+        // EVENEMENT : 'loadedmetadata'
+        // Se declenche quand le navigateur a lu les informations de la video
+        // (duree, dimensions, etc.) mais avant qu'elle ne commence a jouer.
+        video.addEventListener('loadedmetadata', function() {
+            console.log('Infos de la video chargees (duree, taille...)');
+        });
+
+        // EVENEMENT : 'play'
+        // Se declenche des que la video commence a jouer (y compris apres une pause).
+        video.addEventListener('play', function() {
+            console.log('La video est en train de jouer.');
+        });
+
+        // EVENEMENT : 'pause'
+        // Se declenche si l'utilisateur (ou le code) met la video en pause.
+        video.addEventListener('pause', function() {
+            console.log('La video est en pause.');
+        });
+
+        // EVENEMENT : 'ended'
+        // Se declenche quand la video arrive a sa fin.
+        // Comme on a mis l'attribut "loop" dans le HTML, cet evenement ne se produira
+        // que si l'attribut loop est retire plus tard par JavaScript.
+        video.addEventListener('ended', function() {
+            console.log('La video est terminee.');
+        });
+
+        // ---- 4. BOUTON LECTURE / PAUSE ----
+        // On ajoute un "ecouteur d'evenement" sur le bouton.
+        // "click" signifie : quand l'utilisateur clique sur le bouton, execute la fonction.
+        btnPlayPause.addEventListener('click', function() {
+            // video.paused est une propriete qui vaut "true" si la video est en pause.
+            if (video.paused) {
+                // Si la video est en pause, on la relance.
+                video.play();
+                // On change l'icone a l'interieur du bouton pour montrer qu'on peut mettre en pause.
+                btnPlayPause.innerHTML = '<i class="bi bi-pause-fill"></i>';
+            } else {
+                // Si la video est en train de jouer, on la met en pause.
+                video.pause();
+                // On change l'icone pour montrer qu'on peut relancer la lecture.
+                btnPlayPause.innerHTML = '<i class="bi bi-play-fill"></i>';
+            }
+        });
+
+        // ---- 5. BOUTON SON / MUET ----
+        // Meme principe : quand on clique sur le bouton de son, on bascule l'etat.
+        btnMute.addEventListener('click', function() {
+            // video.muted est une propriete qui vaut "true" si le son est coupe.
+            // Le point d'exclamation "!" inverse la valeur : true devient false, et inversement.
+            video.muted = !video.muted;
+
+            // On met a jour l'icone en fonction de la nouvelle valeur de video.muted.
+            if (video.muted) {
+                // Si le son est coupe, on affiche l'icone "volume-mute" (haut-parleur barre).
+                btnMute.innerHTML = '<i class="bi bi-volume-mute-fill"></i>';
+            } else {
+                // Si le son est actif, on affiche l'icone "volume-up" (haut-parleur avec vague).
+                btnMute.innerHTML = '<i class="bi bi-volume-up-fill"></i>';
+            }
+        });
+
+        // ---- 6. LANCER LA VIDEO AUTOMATIQUEMENT AU CHARGEMENT ----
+        // window represente la fenetre du navigateur.
+        // 'DOMContentLoaded' est l'evenement qui se declenche quand la page HTML est completement chargee.
+        // C'est le bon moment pour lancer notre video, car on est sur que la balise existe.
+        window.addEventListener('DOMContentLoaded', demarrerVideo);
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
